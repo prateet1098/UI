@@ -1,0 +1,72 @@
+import org.drools.core.process.core.datatype.impl.type.StringDataType;
+import org.drools.core.process.core.datatype.impl.type.ObjectDataType;
+import org.drools.core.process.core.datatype.impl.type.ListDataType;
+import org.drools.core.process.core.datatype.impl.type.BooleanDataType;
+
+[
+  [
+    "name" : "ExternalDbUpdateTask", 
+    "parameters" : [
+
+        "databaseType" : new StringDataType(),
+        "serverAddress" : new StringDataType(),
+        "port" : new StringDataType(),
+        "serverInstance" : new StringDataType(),
+        "databaseName" : new StringDataType(),
+        "queryString" : new StringDataType(),
+        
+        "databaseUsername" : new StringDataType(),
+        "databaseUserPassword" : new StringDataType(),
+        
+        "sealSystemNames" : new StringDataType(),
+        "systemNamesSeparator" : new StringDataType()
+        
+    ],
+    "results" : [ 
+        "Result" : new ObjectDataType("java.util.Map") 
+    ], 
+    "displayName" : "External Database Update Task", 
+  ],
+  [
+	"name" : "CreateDocByTemplateTask", 
+    "parameters" : [
+        "templateName" : new StringDataType(),
+        "metadataSchemaName" : new StringDataType(),
+        "folderMetadataToLoadOnTemplate" : new StringDataType()
+    ],
+    "results" : [ 
+        "Result" : new ObjectDataType("java.util.Map") 
+    ], 
+    "displayName" : "Template document creation task",  	
+  ],
+	[
+  	"name" : "CustomEmail",
+    "parameters" : [
+      "To" : new StringDataType(),
+      "Cc" : new StringDataType(),
+      "Bcc" : new StringDataType(),
+      "Subject" : new StringDataType(),
+      "BodyTemplate" : new StringDataType(),
+      "Language" : new StringDataType(),
+      "AttachWorkflowDocument" : new StringDataType()
+    ],
+    "displayName" : "CustomEmail",
+    "icon" : "defaultemailicon.gif"
+  ],
+  [
+  	"name" : "CustomEmailV2",
+    "parameters" : [
+      "To" : new StringDataType(),
+      "Cc" : new StringDataType(),
+      "Bcc" : new StringDataType(),
+      "Subject" : new StringDataType(),
+      "BodyTemplate" : new StringDataType(),
+      "Language" : new StringDataType(),
+      "attachContent" : new BooleanDataType(),
+      "folderDocumentIds" : new ObjectDataType("java.util.List"),
+      "async" : new BooleanDataType()
+    ],
+    "displayName" : "CustomEmailV2",
+    "icon" : "defaultemailicon.gif"
+  ]
+]
